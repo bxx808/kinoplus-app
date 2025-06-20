@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Tag;
+
 
 class PageController extends Controller
 {
@@ -29,5 +31,25 @@ class PageController extends Controller
     public function login()
     {
         return view('auth.login');
+    }
+
+    public function create()
+    {
+        return view('adminPanel.post.create', [
+            'categories' => Category::all(),
+            'tags' => Tag::all()
+        ]);
+    }
+
+    public function edit()
+    {
+        return view('adminPanel.post.edit');
+    }
+
+    public function tags()
+    {
+        return view('adminPanel.tag.create', [
+            'tags' => Tag::all(),
+        ]);
     }
 }
